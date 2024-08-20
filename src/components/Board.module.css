@@ -1,0 +1,41 @@
+.board {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    font-size: 2em;
+}
+
+.board-label {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.25em;
+}
+
+.board-row {
+    display: flex;
+    width: fit-content;
+}
+
+.board-cell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0.125em;
+    width: 1.5em;
+    height: 1.5em;
+
+    border: 1px solid gray;
+    border-radius: 4px;
+
+}
+
+.board-cell:hover {
+    cursor: pointer;
+}
+
+.board-cell-safe {
+    color: grey;
+    background-color: lightgray;
+}

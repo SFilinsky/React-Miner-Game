@@ -1,0 +1,19 @@
+.game-settings {
+    margin-bottom: 1em;
+
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.game-settings input {
+    font-size: inherit;
+}
+
+.game-settings label:not(:last-child), .game-settings input:not(:last-child) {
+    margin-bottom: 0.25em;
+}
+
+.game-settings label input {
+    margin-left: 0.5em;
+}

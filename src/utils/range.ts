@@ -1,0 +1,1 @@
+export const range = (size: number): number[] => [...Array(size).keys()];
