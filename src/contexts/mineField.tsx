@@ -12,15 +12,15 @@ type MineField = {
     mines: boolean[],
     mineNeighbourMap: number[],
     fieldSize: FieldSize,
-    changeField: (newFieldSize: FieldSize, mineCount: number, newMines: boolean[]) => void
+    resetField: (newFieldSize: FieldSize, mineCount: number, newMines: boolean[]) => void,
 }
 
 const defaultValue: MineField = {
-    mineCount: 0,
+    mineCount: 10,
+    fieldSize: { x: 7, y: 7 },
     mines: [],
     mineNeighbourMap: [],
-    fieldSize: { x: 0, y: 0 },
-    changeField: () => {}
+    resetField: () => {}
 }
 
 const MineFieldContext = createContext<MineField>(defaultValue);
@@ -31,7 +31,7 @@ export const MineFieldContextProvider = ({ children }: PropsWithChildren) => {
     const [ mines, setMines ] = useState<boolean[]>(defaultValue.mines);
     const [ mineNeighbourMap, setMineNeighbourMap ] = useState<number[]>(defaultValue.mineNeighbourMap);
 
-    const changeField: MineField['setMines'] = useCallback((newFieldSize, newMineCount, newMines) => {
+    const setupField: MineField['setMines'] = useCallback((newFieldSize, newMineCount, newMines) => {
         setFieldSize(newFieldSize);
         setMineCount(newMineCount);
         setMines(newMines);
@@ -62,7 +62,7 @@ export const MineFieldContextProvider = ({ children }: PropsWithChildren) => {
             mineCount,
             mines,
             mineNeighbourMap,
-            changeField
+            resetField: setupField
         }}>
           {children}
         </MineFieldContext.Provider>

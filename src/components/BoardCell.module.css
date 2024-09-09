@@ -1,0 +1,19 @@
+.board-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: fit-content;
+
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+.board-cell:hover {
+    cursor: pointer;
+}
+
+.board-cell-safe {
+    color: grey;
+    background-color: lightgray;
+}

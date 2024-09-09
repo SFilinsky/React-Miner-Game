@@ -12,30 +12,27 @@
     margin-bottom: 0.25em;
 }
 
-.board-row {
+.board-container {
+    position: relative;
+}
+
+.board-cells {
+    display: grid;
+    width: 50vw;
+    height: 50vh;
+}
+
+.board-overlay {
+    position: absolute;
+    width: 100%;
+
+    background: color-mix(in srgb, lightgray, transparent 75%);
+
     display: flex;
-    width: fit-content;
-}
-
-.board-cell {
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-
-    margin: 0.125em;
-    width: 1.5em;
-    height: 1.5em;
-
-    border: 1px solid gray;
-    border-radius: 4px;
-
+    align-items: center;
 }
 
-.board-cell:hover {
-    cursor: pointer;
-}
-
-.board-cell-safe {
-    color: grey;
-    background-color: lightgray;
+.board-overlay:empty {
+    display: none;
 }

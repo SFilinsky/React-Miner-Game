@@ -21,9 +21,8 @@ const Main = () => {
                 <div style={{ marginRight: '0.5em' }}>
                     <GameSettings/>
                 </div>
-                <Message />
             </div>
-            <Board/>
+             <Board overlay={gameController.isWon || gameController.isLost && <Message />}/>
         </>
     )
 }

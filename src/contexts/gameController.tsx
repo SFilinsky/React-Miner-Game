@@ -26,7 +26,7 @@ const GameControllerContext = createContext<GameController>({
 
 export const GameControllerProvider = ({ children }: PropsWithChildren) => {
 
-    const { changeField, mines, mineNeighbourMap, fieldSize } = useMineField();
+    const { resetField, mines, mineNeighbourMap, fieldSize } = useMineField();
 
     const [ cellsOpen, setCellsOpen ] = useState<boolean[]>([]);
     const [ isLost, setIsLost ] = useState(false);
@@ -36,8 +36,10 @@ export const GameControllerProvider = ({ children }: PropsWithChildren) => {
         const newMines = Array<boolean>(fieldSize.x * fieldSize.y).fill(false);
         const newMinesOpen = Array<boolean>(fieldSize.x * fieldSize.y).fill(false);
 
+        const actualMineCount = Math.min(fieldSize.x * fieldSize.y, mineCount);
+
         let minesAllocated = 0;
-        while (minesAllocated < mineCount) {
+        while (minesAllocated < actualMineCount) {
             const mineX = Math.floor(Math.random() * fieldSize.x);
             const mineY = Math.floor(Math.random() * fieldSize.y);
             const index = convert2Dto1D({ x: mineX, y: mineY }, fieldSize);
@@ -50,7 +52,7 @@ export const GameControllerProvider = ({ children }: PropsWithChildren) => {
         setIsWon(false);
         setIsLost(false);
         setCellsOpen(newMinesOpen);
-        changeField(fieldSize, mineCount, newMines);
+        resetField(fieldSize, actualMineCount, newMines);
     }
 
     const check: GameController['check'] = (position) => {
